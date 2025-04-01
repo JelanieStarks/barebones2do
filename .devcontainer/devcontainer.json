@@ -1,7 +1,7 @@
 {
     "name": "Full Stack Dev Container",
     "build": {
-        "dockerFile": "Dockerfile"
+        "dockerfile": "Dockerfile"
     },
     "customizations": {
         "vscode": {
