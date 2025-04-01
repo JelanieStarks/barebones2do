@@ -6,8 +6,11 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-python.python",
-                "dbaeumer.vscode-eslint"
+        "ms-python.python",                     // Python support
+        "dbaeumer.vscode-eslint",               // Linting for JavaScript/JSX
+        "esbenp.prettier-vscode",               // Code formatter
+        "dsznajder.es7-react-js-snippets",      // React/Redux code snippets
+        "tht13.code-gpt"                        // GPT-3 integration for prompt engineering (optional)
             ]
         }
    
