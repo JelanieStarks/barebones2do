@@ -1,38 +1,104 @@
+/* App.css */
+
+/* Mobile-First Container */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: stretch;
+  padding: 1rem;
+  gap: 1rem;
+  width: 100%;
+  max-width: 480px;   /* mobile max width */
+  margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+/* Header / Logo area */
+.App-header {
+  text-align: center;
+  padding: 1rem 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Task list section */
+.listSection {
+  flex-grow: 1;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem;
+  box-shadow: 0 0 8px var(--glow-color);
+  max-height: 60vh;   /* allow scroll if long on mobile */
+  overflow-y: auto;
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  color: var(--border-color);
+  padding: 2rem 0;
+}
+
+/* Task items */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Input + Button Row */
+.inputSection {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Text input */
+.input {
+  flex-grow: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0 0 6px var(--glow-color);
+  outline: none;
+}
+
+/* “Add” button */
+.button {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--glow-color);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 12px var(--glow-color);
+}
+
+/* Responsive tweaks for larger screens */
+@media (min-width: 600px) {
+  .App {
+    padding: 2rem;
+    gap: 1.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  .input {
+    font-size: 1.125rem;
+  }
+  .button {
+    font-size: 1.125rem;
+  }
+  .listSection {
+    padding: 1rem;
   }
 }
