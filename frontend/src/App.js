@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './App.css';  // Import the stylesheet
+import './App.css';
+import TaskList from './TaskList';
 
 export default function App() {
   const [taskText, setTaskText] = useState('');
@@ -16,21 +17,10 @@ export default function App() {
   };
 
   return (
-    <div className="container">
-      {/* To-Do List Section */}
-      <section className="listSection">
-        {tasks.length === 0 ? (
-          <p className="empty">No tasks yet</p>
-        ) : (
-          <ul className="list">
-            {tasks.map((t, i) => (
-              <li key={i} className="item">{t}</li>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      {/* Input + Add Button */}
+    <div className="App">
+      <header className="App-header">
+        <h1>barebones2do</h1>
+      </header>
       <div className="inputSection">
         <input
           type="text"
@@ -41,9 +31,15 @@ export default function App() {
           className="input"
         />
         <button onClick={handleAdd} className="button">
-          Add
+          <span className="bi bi-plus" aria-label="Add"></span> Add
         </button>
       </div>
+      <section className="listSection">
+        <TaskList tasks={tasks} />
+      </section>
+      <footer className="footer">
+        &copy; {new Date().getFullYear()} STARKSERVICES
+      </footer>
     </div>
   );
 }

@@ -1,21 +1,38 @@
 /* App.css */
 
+html, body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', Arial, sans-serif;
+  box-sizing: border-box;
+}
+
 /* Mobile-First Container */
-.App {
+ .App {
   display: flex;
   flex-direction: column;
   align-items: stretch;
   padding: 1rem;
   gap: 1rem;
-  width: 100%;
-  max-width: 480px;   /* mobile max width */
+  width: 100vw;
+  min-height: 100vh;
+  max-width: 600px;
   margin: 0 auto;
+  background: #000;
+  color: #fff;
+  box-sizing: border-box;
 }
+
 
 /* Header / Logo area */
 .App-header {
   text-align: center;
   padding: 1rem 0;
+  color: #fff;
 }
 
 /* Task list section */
@@ -28,6 +45,7 @@
   box-shadow: 0 0 8px var(--glow-color);
   max-height: 60vh;   /* allow scroll if long on mobile */
   overflow-y: auto;
+  color: #fff;
 }
 
 /* Empty state */
@@ -35,6 +53,7 @@
   text-align: center;
   color: var(--border-color);
   padding: 2rem 0;
+  background: #000;
 }
 
 /* Task items */
@@ -42,11 +61,16 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  color: #fff;
 }
 
 .item {
   padding: 0.5rem;
   border-bottom: 1px solid var(--border-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 /* Input + Button Row */
@@ -66,6 +90,7 @@
   border-radius: 4px;
   box-shadow: 0 0 6px var(--glow-color);
   outline: none;
+  color: #fff;
 }
 
 /* “Add” button */
@@ -79,6 +104,10 @@
   cursor: pointer;
   box-shadow: 0 0 8px var(--glow-color);
   transition: background 0.2s ease, box-shadow 0.2s ease;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .button:hover {
@@ -86,11 +115,18 @@
   box-shadow: 0 0 12px var(--glow-color);
 }
 
+/* Icon styling */
+.bi {
+  font-size: 1.2em;
+  color: #fff;
+}
+
 /* Responsive tweaks for larger screens */
 @media (min-width: 600px) {
   .App {
     padding: 2rem;
     gap: 1.5rem;
+    max-width: 800px;
   }
   .input {
     font-size: 1.125rem;
@@ -101,4 +137,19 @@
   .listSection {
     padding: 1rem;
   }
+}
+
+/* Footer copyright */
+.footer {
+  width: 100vw;
+  text-align: center;
+  padding: 1rem 0;
+  color: #fff;
+  font-size: 0.95rem;
+  background: #000;
+  opacity: 0.7;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
 }
