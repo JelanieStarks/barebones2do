@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function TaskList({ tasks }) {
+/**
+ * TaskList component displays a list of tasks with priorities and allows changing priorities.
+ * @param {Object[]} tasks - Array of task objects: { text, original, priority, aiRefined }
+ * @param {function} onPriorityChange - Function(idx, newPriority) to change a task's priority
+ */
+function TaskList({ tasks, onPriorityChange }) {
   const [checked, setChecked] = useState(Array(tasks.length).fill(false));
 
   // Update checked state if tasks change
-  React.useEffect(() => {
+  useEffect(() => {
     setChecked(Array(tasks.length).fill(false));
   }, [tasks]);
 
@@ -31,7 +36,24 @@ function TaskList({ tasks }) {
           >
             {checked[idx] ? "✔" : "○"}
           </button>
-          <span style={{ textDecoration: checked[idx] ? "line-through" : "none" }}>{task}</span>
+          <span style={{ textDecoration: checked[idx] ? "line-through" : "none" }}>
+            {task.text}
+          </span>
+          {typeof task.priority === 'number' && (
+            <>
+              <span className="priority-tag" title="Priority">P{task.priority}</span>
+              <select
+                value={task.priority}
+                onChange={e => onPriorityChange && onPriorityChange(idx, Number(e.target.value))}
+                className="priority-select"
+                aria-label="Change priority"
+              >
+                {[...Array(10)].map((_, i) => (
+                  <option key={i + 1} value={i + 1}>{i + 1}</option>
+                ))}
+              </select>
+            </>
+          )}
         </li>
       ))}
     </ul>
