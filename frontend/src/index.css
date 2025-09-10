@@ -18,6 +18,7 @@ html, body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
 }
 
 *, *::before, *::after {
@@ -96,7 +97,7 @@ code {
 
 /* Scrollable task list */
 .scrollable-list {
-  max-height: 300px;
+  max-height: 60vh;
   overflow-y: auto;
   padding-right: 8px;
 }
@@ -114,7 +115,7 @@ code {
   background: transparent;
   border: none;
   color: var(--text-color);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   cursor: pointer;
   margin-right: 0.5rem;
   transition: color 0.2s;

@@ -1,21 +1,22 @@
 {
-    "name": "Full Stack Dev Container",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-        "ms-python.python",                     // Python support
-        "dbaeumer.vscode-eslint",               // Linting for JavaScript/JSX
-        "esbenp.prettier-vscode",               // Code formatter
-        "dsznajder.es7-react-js-snippets",      // React/Redux code snippets
-        "tht13.code-gpt"                        // GPT-3 integration for prompt engineering (optional)
-            ]
-        }
-   
-      
-    },
-    "postCreateCommand": "pip install -r backend/requirements.txt && cd frontend && npm install"
-  }
-  
+  "name": "Full Stack Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "NODE_VERSION": "18"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "dsznajder.es7-react-js-snippets",
+        "tht13.code-gpt"
+      ]
+    }
+  },
+  "postCreateCommand": "pip install -r backend/requirements.txt && cd frontend && npm install",
+  "forwardPorts": [3000]
+}

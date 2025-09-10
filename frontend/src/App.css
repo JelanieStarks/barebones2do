@@ -74,6 +74,18 @@ html, body {
   position: relative;
 }
 
+/* Hot/Warm/Cold badges */
+.badge-hot, .badge-warm, .badge-cold {
+  margin-left: 0.5rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.85em;
+  border: 1px solid var(--border-color);
+}
+.badge-hot { background: #440000; color: #ff6b6b; }
+.badge-warm { background: #443500; color: #ffd166; }
+.badge-cold { background: #001a33; color: #74c0fc; }
+
 /* Priority tag */
 .priority-tag {
   background: #222;
