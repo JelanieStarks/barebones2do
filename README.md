@@ -2,41 +2,148 @@
 A simple to-do list application designed to help users efficiently manage their tasks.
 Barebones To Do List is a simple single-page application that leverages AI to transform your task descriptions into strong, past-tense action statements with prioritized labels—keeping you laser-focused on your long-term goals like fitness, wealth, knowledge, and relationships.
 
-What the App Does
-Task Transformation:
+## ✨ Features
+
+### Mobile-Friendly & Offline-Ready
+- **Progressive Web App (PWA)**: Install on mobile devices for native app experience
+- **Offline Support**: Service worker enables task management without internet connection
+- **Responsive Design**: Optimized for mobile, tablet, and desktop viewing
+- **Local Storage**: Tasks persist locally when offline
+
+### Task Management
+- **AI-Powered Task Transformation**: Uses AI to rephrase your task descriptions into past-tense statements with assertive language
+- **Smart Prioritization**: Automatically assigns "Hot," "Warm," or "Cold" labels based on importance
+- **Task Completion**: Mark tasks as complete to move them to archive
+- **Archive System**: Review completed tasks with completion dates
+- **Offline Fallback**: Local task refinement when AI is unavailable
+
+### Development Environment
+- **GitHub Codespaces Ready**: Full development environment with Node.js and Python support
+- **Docker Container**: Consistent development setup across different machines
+- **Hot Reloading**: Instant feedback during development
+
+## 🚀 Quick Start
+
+### Using GitHub Codespaces (Recommended)
+1. Click on "Code" → "Codespaces" → "Create codespace on main"
+2. Wait for the container to build and dependencies to install
+3. Start the frontend: `cd frontend && npm start`
+4. Start the backend: `cd backend && python3 app.py`
+5. Open the forwarded port 3000 to view the application
+
+### Local Development
+```bash
+# Clone the repository
+git clone https://github.com/JelanieStarks/barebones2do.git
+cd barebones2do
+
+# Install frontend dependencies
+cd frontend
+npm install
+
+# Install backend dependencies
+cd ../backend
+pip3 install -r requirements.txt
+
+# Start development servers
+# Terminal 1 - Frontend (runs on port 3000)
+cd frontend
+npm start
+
+# Terminal 2 - Backend (runs on port 5000)
+cd backend
+python3 app.py
+```
+
+## 🏗️ Project Structure
+
+```
+barebones2do/
+├── .devcontainer/
+│   ├── devcontainer.json    # VS Code devcontainer configuration
+│   └── Dockerfile          # Container setup for Node.js + Python
+├── frontend/
+│   ├── public/
+│   │   ├── service-worker.js    # Offline functionality
+│   │   ├── manifest.json        # PWA configuration
+│   │   └── index.html          # Mobile-optimized HTML
+│   ├── src/
+│   │   ├── App.js              # Main application with local storage
+│   │   ├── TaskList.js         # Task display with archive features
+│   │   ├── App.css            # Mobile-first responsive styles
+│   │   └── index.js           # Service worker registration
+│   └── package.json           # React dependencies
+├── backend/
+│   ├── app.py                 # Flask API server
+│   └── requirements.txt       # Python dependencies
+└── README.md
+```
+
+## 📱 Mobile & PWA Features
+
+### Installation
+- Visit the site on your mobile device
+- Look for "Add to Home Screen" prompt (iOS) or "Install" banner (Android)
+- Use like a native app with offline capabilities
+
+### Offline Usage
+- All tasks are stored locally in browser storage
+- Service worker caches app resources for offline access
+- AI fallback provides basic task refinement when offline
+
+## 🎯 How It Works
+
+### Task Transformation
 The app uses AI to rephrase your task descriptions into past-tense statements with assertive language (e.g., replacing "want" with "desire").
 
-Priority Assignment:
-It evaluates each task and assigns a "hot," "warm," or "cold" label based on its importance, ensuring that critical, long-term goals are given precedence.
+### Priority Assignment
+Each task is evaluated and assigned a "hot," "warm," or "cold" label based on its importance, ensuring that critical, long-term goals are given precedence.
 
-Task Organization:
-Tasks are automatically organized from hottest to coldest with check marks, and once completed, they’re archived for later reflection.
+### Task Organization
+Tasks are automatically organized from hottest to coldest with completion options, and once completed, they're archived for later reflection.
 
-Goal Reminders:
-The app reminds you to record your daily goals by prompting you to either take a picture or type them in, keeping your ambitions in sight.
+### Goal Management
+The app helps you stay focused on long-term ambitions by providing disciplined, faith-driven accountability for what truly matters.
 
-Scalability and Feedback:
-There’s a dedicated section for testing new features and gathering user feedback to help the app grow and evolve.
+## 🛠️ Development
 
-User Stories and Use Cases
-You will be able to add a task:
-Input any task into the app, and it will convert your description into a strong, past-tense statement that motivates action.
+### Testing
+```bash
+cd frontend
+npm test          # Run React tests
+npm run build     # Test production build
+```
 
-You will be able to see task priorities:
-Each task is automatically tagged as hot, warm, or cold, so you can immediately know which tasks require urgent attention.
+### Linting
+```bash
+cd frontend
+npm run lint      # Check code style
+```
 
-You will be able to complete and archive tasks:
-Mark tasks as completed, and they will be moved to an archive for end-of-day review and reflection.
+### Docker Development
+The project includes a complete Docker development environment:
+- Node.js 18 for frontend development
+- Python 3 with pip for backend development
+- VS Code extensions for React, Python, and linting
+- Port forwarding for both frontend (3000) and backend (5000)
 
-You will be able to review your daily progress:
-At the end of the day, the app presents a summary of your completed tasks, letting you assess your productivity.
+## 🎨 Customization
 
-You will be able to record your goals:
-Receive a nightly prompt to write down your goals—initially by typing (with plans for handwriting recognition in future updates).
+### Styling
+- Edit `frontend/src/App.css` for visual customization
+- Mobile-first responsive design
+- CSS variables for easy theming
 
-You will be able to test and suggest new features:
-Access a special section where you can experiment with upcoming features and provide feedback to help shape the app’s evolution.
+### AI Integration
+- Configure your OpenAI API key in `frontend/src/App.js`
+- Fallback logic ensures functionality without AI
 
-Purpose
-The purpose of Barebones To Do List is to help you harness the power of AI for personal productivity. By transforming your tasks into actionable, motivational statements and prioritizing them based on your long-term ambitions, the app serves as a disciplined, faith-driven tool to keep you accountable and focused on what truly matters.
+## 📄 License
 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+*Purpose: The purpose of Barebones To Do List is to help you harness the power of AI for personal productivity. By transforming your tasks into actionable, motivational statements and prioritizing them based on your long-term ambitions, the app serves as a disciplined, faith-driven tool to keep you accountable and focused on what truly matters.*
+
+**© 2024 STARKSERVICES**
