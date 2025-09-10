@@ -1,5 +1,11 @@
 /* App.css */
 
+:root {
+  --text-color: #fff;
+  --border-color: #333;
+  --glow-color: rgba(255, 215, 0, 0.3);
+}
+
 html, body {
   width: 100vw;
   min-height: 100vh;
@@ -74,6 +80,82 @@ html, body {
   position: relative;
 }
 
+/* Task text */
+.task-text {
+  flex-grow: 1;
+  color: #fff;
+}
+
+/* Check button */
+.check {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.check:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Delete button */
+.delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ff6b6b;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 107, 107, 0.1);
+}
+
+/* Priority badges */
+.badge {
+  padding: 0.1rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: 0.5rem;
+}
+
+.priority-1 {
+  background: #ff4757;
+  color: #fff;
+}
+
+.priority-2 {
+  background: #ffa502;
+  color: #fff;
+}
+
+.priority-3 {
+  background: #57606f;
+  color: #fff;
+}
+
+/* Completed task styling */
+.task.completed {
+  opacity: 0.7;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.task.completed .task-text {
+  text-decoration: line-through;
+}
+
 /* Priority tag */
 .priority-tag {
   background: #222;
@@ -91,8 +173,7 @@ html, body {
   color: #ffd700;
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  margin-left: 0.25rem;
-  font-size: 0.95em;
+  font-size: 0.8rem;
   padding: 0.1rem 0.3rem;
 }
 
@@ -100,11 +181,13 @@ html, body {
 .inputSection {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 /* Text input */
 .input {
   flex-grow: 1;
+  min-width: 200px;
   padding: 0.75rem;
   font-size: 1rem;
   background: transparent;
@@ -113,7 +196,6 @@ html, body {
   border-radius: 4px;
   box-shadow: 0 0 6px var(--glow-color);
   outline: none;
-  color: #fff;
 }
 
 /* “Add” button */
@@ -136,6 +218,33 @@ html, body {
 .button:hover {
   background: rgba(255,255,255,0.1);
   box-shadow: 0 0 12px var(--glow-color);
+}
+
+/* Buttons */
+.button {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--glow-color);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.button:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 12px var(--glow-color);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Icon styling */

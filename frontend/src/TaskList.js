@@ -1,59 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 /**
- * TaskList component displays a list of tasks with priorities and allows changing priorities.
- * @param {Object[]} tasks - Array of task objects: { text, original, priority, aiRefined }
- * @param {function} onPriorityChange - Function(idx, newPriority) to change a task's priority
+ * TaskList component displays a list of tasks with priorities, completion, and deletion.
+ * @param {Object[]} tasks - Array of task objects: { id, text, original, priority, aiRefined, completed }
+ * @param {function} onPriorityChange - Function(taskId, newPriority) to change a task's priority
+ * @param {function} onComplete - Function(taskId) to complete a task
+ * @param {function} onDelete - Function(taskId) to delete a task
  */
-function TaskList({ tasks, onPriorityChange }) {
-  const [checked, setChecked] = useState(Array(tasks.length).fill(false));
-
-  // Update checked state if tasks change
-  useEffect(() => {
-    setChecked(Array(tasks.length).fill(false));
-  }, [tasks]);
-
+function TaskList({ tasks, onPriorityChange, onComplete, onDelete }) {
   if (!tasks || tasks.length === 0) {
     return <div className="empty">No tasks yet</div>;
   }
 
-  const handleCheck = idx => {
-    setChecked(prev => {
-      const copy = [...prev];
-      copy[idx] = !copy[idx];
-      return copy;
-    });
-  };
-
   return (
     <ul className="list scrollable-list">
-      {tasks.map((task, idx) => (
-        <li key={idx} className="item">
+      {tasks.map((task) => (
+        <li key={task.id} className="item">
           <button
-            className={checked[idx] ? "check checked" : "check"}
-            onClick={() => handleCheck(idx)}
-            aria-label={checked[idx] ? "Uncheck task" : "Check task"}
+            className="check"
+            onClick={() => onComplete && onComplete(task.id)}
+            aria-label="Complete task"
+            title="Complete task"
           >
-            {checked[idx] ? "✔" : "○"}
+            <span className="bi bi-circle"></span>
           </button>
-          <span style={{ textDecoration: checked[idx] ? "line-through" : "none" }}>
+          <span className="task-text">
             {task.text}
           </span>
           {typeof task.priority === 'number' && (
-            <>
-              <span className="priority-tag" title="Priority">P{task.priority}</span>
-              <select
-                value={task.priority}
-                onChange={e => onPriorityChange && onPriorityChange(idx, Number(e.target.value))}
-                className="priority-select"
-                aria-label="Change priority"
-              >
-                {[...Array(10)].map((_, i) => (
-                  <option key={i + 1} value={i + 1}>{i + 1}</option>
-                ))}
-              </select>
-            </>
+            <span className={`badge priority-${task.priority}`}>
+              {task.priority === 1 ? 'Hot' : task.priority === 2 ? 'Warm' : 'Cold'}
+            </span>
           )}
+          {task.priority && (
+            <select
+              value={task.priority}
+              onChange={e => onPriorityChange && onPriorityChange(task.id, Number(e.target.value))}
+              className="priority-select"
+              aria-label="Change priority"
+            >
+              <option value={1}>1 - Hot</option>
+              <option value={2}>2 - Warm</option>
+              <option value={3}>3 - Cold</option>
+            </select>
+          )}
+          <button
+            className="delete-btn"
+            onClick={() => onDelete && onDelete(task.id)}
+            aria-label="Delete task"
+            title="Delete task"
+          >
+            <span className="bi bi-trash"></span>
+          </button>
         </li>
       ))}
     </ul>
